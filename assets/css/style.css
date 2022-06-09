@@ -1,0 +1,57 @@
+@font-face {
+  font-family: EarthBound;
+  src: url(/assets/font/apple_kid.woff);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  height: 100vh;
+  background: linear-gradient(0deg, #ac917c 0%, #6d910d 100%);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: EarthBound;
+}
+
+h1 {
+  color: black;
+  text-align: center;
+  font-size: 60px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+canvas {
+  box-shadow: 10px 10px 20px black;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  min-width: 1024px;
+  min-height: 576px;
+}
+
+.note {
+  border: 1px solid;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  background: #ac917c;
+}
+
+img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  transform: translate(-50%, -50%);
+}
