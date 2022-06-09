@@ -25,6 +25,9 @@ class Sprite {
           this.position.y === -855
         ) {
           text = "mailbox";
+          if (keys.d.pressed && lastKey === "Space") {
+            pickupAudio.play();
+          }
         }
       }, 100);
     };
@@ -71,7 +74,23 @@ class Boundary {
   }
 
   draw() {
-    c.fillStyle = "rgba(255, 0, 0, 0.0)"; // color collisions
+    c.fillStyle = "rgba(255, 0, 0, 0.9)"; // color collisions
+    c.fillRect(this.position.x, this.position.y, this.width, this.height);
+  }
+}
+class Fruits {
+  static width = 120;
+  static height = 120;
+
+  constructor({ position }) {
+    console.log(position)
+    this.position = position;
+    this.width = 120;
+    this.height = 120;
+  }
+
+  draw() {
+    c.fillStyle = "rgba(0, 0, 255, 0.3)"; // color collisions
     c.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 }

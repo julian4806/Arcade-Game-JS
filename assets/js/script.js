@@ -27,6 +27,11 @@ for (let i = 0; i < collisions.length; i += 30) {
   collisionsMap.push(collisions.slice(i, 30 + i));
 }
 
+const fruitsMap = [];
+for (let i = 0; i < fruits.length; i += 30) {
+  fruitsMap.push(fruits.slice(i, 30 + i));
+}
+
 const offset = {
   x: -2070,
   y: -750,
@@ -47,12 +52,30 @@ collisionsMap.forEach((row, i) => {
   });
 });
 
+const fruitCollision = [];
+fruitsMap.forEach((row, i) => {
+  row.forEach((symbol, j) => {
+    if (symbol === 711)
+      fruitCollision.push(
+        new Fruits({
+          position: {
+            x: j * Fruits.width + offset.x,
+            y: i * Fruits.height + offset.y,
+          },
+        })
+      );
+  });
+});
+
+// Random image random tile
+const fruit = new Image();
+fruit.src = "./assets/img/cherry.png";
+// Random image random tile
+
 const image = new Image();
 image.src = "./assets/img/Meditation Island.png";
-
 const foregroundImage = new Image();
 foregroundImage.src = "./assets/img/foregroundObjects.png";
-
 const playerDownImage = new Image();
 playerDownImage.src = "./assets/img/player/playerDown.png";
 const playerUpImage = new Image();
@@ -111,7 +134,7 @@ const keys = {
   },
 };
 
-const movables = [background, ...boundaries, foreground];
+const movables = [background, ...boundaries, foreground, ...fruitCollision];
 
 function rectangularCollision({ rectangle1, rectangle2 }) {
   return (
@@ -127,6 +150,9 @@ function animate() {
   window.requestAnimationFrame(animate);
   background.draw();
   boundaries.forEach((Boundary) => {
+    Boundary.draw();
+  });
+  fruitCollision.forEach((Boundary) => {
     Boundary.draw();
   });
   player.draw();
@@ -249,11 +275,11 @@ function animate() {
 animate();
 
 // Wait before pickup-audio can play again
+const pickupAudio = new Audio("/assets/audio/pickup.mp3");
 let text = "Can't talk to this thing...";
 let isBlocked = false;
 function pickupTimeout() {
   if (isBlocked === false) {
-    new Audio("/assets/audio/pickup.mp3").play();
     // hardcoded
     notification.innerHTML = text;
     Object.assign(notification.style, {
@@ -266,16 +292,13 @@ function pickupTimeout() {
         display: `none`,
         "z-index": 0,
       });
-      text = "Can't talk to this thing...";
       setTimeout(() => {
         isBlocked = false;
-      }, 500);
+      }, 100);
+      text = "Can't talk to this thing...";
     }, 1000);
   }
 }
-setInterval(() => {
-  console.log(isBlocked);
-}, 100);
 // Wait before pickup-audio can play again
 
 let lastKey = "";
