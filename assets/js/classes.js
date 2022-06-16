@@ -10,6 +10,7 @@ class Sprite {
 
       //Check position
       setInterval(() => {
+        yourScore.innerText = Math.floor(scoreCounter);
         // console.log("Y position: " + this.position.y);
         // console.log("X position: " + this.position.x);
         if (this.position.y <= -1750 && this.position.x <= -1932) {
@@ -21,13 +22,20 @@ class Sprite {
         } else if (
           player.image === player.sprites.up &&
           this.position.x <= -1845 &&
-          this.position.x >= -2052 && // between -1845 & -2052
+          this.position.x >= -2052 &&
           this.position.y === -855
         ) {
           text = "mailbox";
           if (keys.d.pressed && lastKey === "Space") {
             pickupAudio.play();
           }
+        } else if (
+          player.image === player.sprites.up &&
+          this.position.x <= -372 &&
+          this.position.x >= -500 &&
+          this.position.y === -1335
+        ) {
+          text = "an old post sign...";
         }
       }, 100);
     };
@@ -78,15 +86,20 @@ class Boundary {
     c.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 }
+
 class Fruits {
   static width = 120;
   static height = 120;
 
-  constructor({ position }) {
-    console.log(position)
+  constructor({ position, symbol }) {
+    // console.log(position);
     this.position = position;
     this.width = 120;
     this.height = 120;
+    this.symbol = symbol;
+    if (symbol === 400) {
+      console.log(symbol);
+    }
   }
 
   draw() {

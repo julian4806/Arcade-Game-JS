@@ -10,14 +10,30 @@
     <script src='assets/data/fruits.js' defer></script>
     <script src='assets/js/classes.js'></script>
     <script src='assets/js/script.js' defer></script>
-    <script type="text/javascript" src="js/jquery.jrumble.1.3.js"></script>
     <link rel='stylesheet' href='assets/css/style.css'>
 </head>
 
-<body>
+<body style="opacity: 0;">
     <div>
-        <div id="demo"></div>
-        <h1>Meditation Island</h1><canvas></canvas>
+        <div class="initialScreen"></div>
+        <h1>Meditation Island</h1>
+        <div class="gameScreen">
+            <div class="scoreboard">
+                <p>scoreboard</p>
+                <ul>
+                    <li>1.</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+                <div>
+                    Your name: <span class="name"></span><br>
+                    Your score: <span class="yourScore"></span>
+                </div>
+            </div>
+            <canvas></canvas>
+        </div>
         <div class='note' style='display: none;'></div>
         <img src='assets/img/talahRama.gif' class='talahRama' style='display: none;' alt=''>
     </div>

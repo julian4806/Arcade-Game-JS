@@ -3,7 +3,18 @@ document.addEventListener("contextmenu", (event) => event.preventDefault());
 let notification = document.querySelector(".note");
 let title = document.querySelector("h1");
 let talah = document.querySelector(".talahRama");
+let yourScore = document.querySelector(".yourScore");
+let scoreCounter = 0;
 const show = [notification, talah];
+
+window.addEventListener("load", () => {
+  let person = prompt("Please enter your name", "Must contain 3 characters");
+  document.querySelector(".name").innerHTML = person;
+  if (person == null || person == "Max 3 characters" || person.length !== 3) {
+  location.reload();
+  }
+  document.body.style.opacity = 1;
+});
 
 let fadeEffect = setInterval(function () {
   if (!title.style.opacity) {
@@ -27,6 +38,7 @@ for (let i = 0; i < collisions.length; i += 30) {
   collisionsMap.push(collisions.slice(i, 30 + i));
 }
 
+// console.log(collisionsMap);
 const fruitsMap = [];
 for (let i = 0; i < fruits.length; i += 30) {
   fruitsMap.push(fruits.slice(i, 30 + i));
@@ -53,17 +65,24 @@ collisionsMap.forEach((row, i) => {
 });
 
 const fruitCollision = [];
+// const array = ["Jake", "Bedro", "Chad", "Daniel", "Eva", "Fiola"];
+// console.log(array.splice((Math.random() * array.length) | 0, 1)[0]);
+// randInt
+// alert(getRandNum(0, 10));
+
 fruitsMap.forEach((row, i) => {
   row.forEach((symbol, j) => {
-    if (symbol === 711)
+    if (symbol === 711 || symbol === 400) {
       fruitCollision.push(
         new Fruits({
           position: {
             x: j * Fruits.width + offset.x,
             y: i * Fruits.height + offset.y,
           },
+          symbol: symbol,
         })
       );
+    }
   });
 });
 
@@ -371,6 +390,7 @@ function talahRama() {
       e.style.display = "block";
     });
     notification.innerHTML = "press 'F' to exit";
+    scoreCounter += 0.1;
     reuse = false;
     window.addEventListener("keydown", (e) => {
       if (["KeyW", "KeyA", "KeyS", "KeyD", "Space"].indexOf(e.code) > -1) {
@@ -409,3 +429,7 @@ function talahRama() {
 }
 // talahRama();
 // Talah Rama Code END
+
+function getRandNum(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
