@@ -1,32 +1,36 @@
 document.addEventListener("contextmenu", (event) => event.preventDefault());
 
 let notification = document.querySelector(".note");
-let title = document.querySelector("h1");
+let title = document.querySelector(".initialMessage");
 let talah = document.querySelector(".talahRama");
 let yourScore = document.querySelector(".yourScore");
 let scoreCounter = 0;
 const show = [notification, talah];
+const cantTalk = new Audio("/assets/audio/blocked.mp3");
+const messageTalk = new Audio("/assets/audio/message.mp3");
+const winMessage = document.querySelector(".winMessage");
 
 window.addEventListener("load", () => {
   let person = prompt("Please enter your name", "Must contain 3 characters");
   document.querySelector(".name").innerHTML = person;
   if (person == null || person == "Max 3 characters" || person.length !== 3) {
-  location.reload();
+    location.reload();
   }
   document.body.style.opacity = 1;
 });
 
-let fadeEffect = setInterval(function () {
-  if (!title.style.opacity) {
-    title.style.opacity = 1;
-  }
-  if (title.style.opacity > 0) {
-    title.style.opacity -= 0.07;
-  } else {
-    clearInterval(fadeEffect);
-  }
-}, 200);
-
+setTimeout(() => {
+  let fadeEffect = setInterval(function () {
+    if (!title.style.opacity) {
+      title.style.opacity = 1;
+    }
+    if (title.style.opacity > 0) {
+      title.style.opacity -= 0.07;
+    } else {
+      clearInterval(fadeEffect);
+    }
+  }, 400);
+}, 1500);
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 
@@ -294,7 +298,6 @@ function animate() {
 animate();
 
 // Wait before pickup-audio can play again
-const pickupAudio = new Audio("/assets/audio/pickup.mp3");
 let text = "Can't talk to this thing...";
 let isBlocked = false;
 function pickupTimeout() {
@@ -305,6 +308,13 @@ function pickupTimeout() {
       display: `block`,
       "z-index": 2,
     });
+
+    if (notification.innerHTML == "Can't talk to this thing...") {
+      cantTalk.play();
+    } else {
+      messageTalk.play();
+    }
+
     isBlocked = true;
     setTimeout(() => {
       Object.assign(notification.style, {

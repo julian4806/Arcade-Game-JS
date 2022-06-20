@@ -11,6 +11,12 @@ class Sprite {
       //Check position
       setInterval(() => {
         yourScore.innerText = Math.floor(scoreCounter);
+        if (yourScore.innerText == "20") {
+          winMessage.style.display = "block";
+          setTimeout(() => {
+            location.reload();
+          }, 3000);
+        }
         // console.log("Y position: " + this.position.y);
         // console.log("X position: " + this.position.x);
         if (this.position.y <= -1750 && this.position.x <= -1932) {
@@ -36,6 +42,7 @@ class Sprite {
           this.position.y === -1335
         ) {
           text = "an old post sign...";
+          console.log(true);
         }
       }, 100);
     };
