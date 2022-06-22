@@ -37,6 +37,10 @@ h1 {
   background-color: gray;
 }
 
+.initialMessage span{
+  color: blueviolet;
+}
+
 .winMessage {
   border-radius: 10px;
   position: absolute;
@@ -48,6 +52,17 @@ h1 {
   background-color: gray;
 }
 
+video {
+  box-shadow: 10px 10px 20px black;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 1024px;
+  height: 576px;
+}
 
 .gameScreen canvas {
   box-shadow: 10px 10px 20px black;
@@ -57,8 +72,6 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
-  min-width: 1024px;
-  min-height: 576px;
 }
 
 .gameScreen .scoreboard,
@@ -68,8 +81,8 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  min-width: 1024px;
-  min-height: 576px;
+  width: 1024px;
+  height: 576px;
   font-size: 30px;
   margin-left: 10px;
   margin-top: 5px;

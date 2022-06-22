@@ -11,11 +11,11 @@ class Sprite {
       //Check position
       setInterval(() => {
         yourScore.innerText = Math.floor(scoreCounter);
-        if (yourScore.innerText == "20") {
+        if (yourScore.innerText == "25") {
           winMessage.style.display = "block";
           setTimeout(() => {
             location.reload();
-          }, 3000);
+          }, 6000);
         }
         // console.log("Y position: " + this.position.y);
         // console.log("X position: " + this.position.x);
@@ -32,9 +32,6 @@ class Sprite {
           this.position.y === -855
         ) {
           text = "mailbox";
-          if (keys.d.pressed && lastKey === "Space") {
-            pickupAudio.play();
-          }
         } else if (
           player.image === player.sprites.up &&
           this.position.x <= -372 &&
@@ -42,7 +39,17 @@ class Sprite {
           this.position.y === -1335
         ) {
           text = "an old post sign...";
-          console.log(true);
+        } else if (
+          // Water video!
+          player.image === player.sprites.up &&
+          this.position.x <= -1185 &&
+          this.position.x >= -1512 &&
+          this.position.y === -855
+        ) {
+          text = "an old pond...";
+          if (keys.d.pressed && lastKey === "Space") {
+            replaceVideoFunc();
+          }
         }
       }, 100);
     };

@@ -9,6 +9,7 @@ const show = [notification, talah];
 const cantTalk = new Audio("/assets/audio/blocked.mp3");
 const messageTalk = new Audio("/assets/audio/message.mp3");
 const winMessage = document.querySelector(".winMessage");
+const video = document.querySelector(".video");
 
 window.addEventListener("load", () => {
   let person = prompt("Please enter your name", "Must contain 3 characters");
@@ -323,12 +324,41 @@ function pickupTimeout() {
       });
       setTimeout(() => {
         isBlocked = false;
-      }, 100);
+      }, 1000);
       text = "Can't talk to this thing...";
     }, 1000);
   }
 }
 // Wait before pickup-audio can play again
+
+// play and remove video
+// Wait before pickup-audio can play again
+let putVideo = '<video src="assets/video/water.mp4" autoplay muted></video>';
+let replaceVideo = false;
+function replaceVideoFunc() {
+  if (replaceVideo === false) {
+    reuse = false;
+    window.addEventListener("keydown", (e) => {
+      if (["KeyW", "KeyA", "KeyS", "KeyD", "Space"].indexOf(e.code) > -1) {
+        for (x in keys) {
+          keys[x].pressed = reuse;
+        }
+      }
+    });
+
+    video.innerHTML = putVideo;
+    replaceVideo = true;
+    setTimeout(() => {
+      replaceVideo = false;
+      console.log("done");
+      video.innerHTML = "";
+      reuse = true;
+      scoreCounter += 3;
+    }, 3000);
+  }
+}
+
+// play and remove video
 
 let lastKey = "";
 window.addEventListener("keydown", (e) => {
