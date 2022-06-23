@@ -91,6 +91,7 @@ class Sprite {
   }
 }
 
+// Collision detection (red squared)
 class Boundary {
   static width = 120;
   static height = 120;
@@ -102,17 +103,17 @@ class Boundary {
   }
 
   draw() {
-    c.fillStyle = "rgba(255, 0, 0, 0.9)"; // color collisions
+    c.fillStyle = "rgba(255, 0, 0, 0.0)"; // color collisions
     c.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 }
 
+// Should be a random fruit spawn but this doesn't work yet... (blue color)
 class Fruits {
   static width = 120;
   static height = 120;
 
   constructor({ position, symbol }) {
-    // console.log(position);
     this.position = position;
     this.width = 120;
     this.height = 120;
@@ -123,7 +124,7 @@ class Fruits {
   }
 
   draw() {
-    c.fillStyle = "rgba(0, 0, 255, 0.3)"; // color collisions
+    c.fillStyle = "rgba(0, 0, 255, 0.0)"; // color fruits collision
     c.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 }

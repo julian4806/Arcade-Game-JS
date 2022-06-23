@@ -6,10 +6,6 @@ $conn = $obj->connection();
 
 $query = " SELECT player.name AS player, score.score AS score FROM player INNER JOIN score ON player.id = score.player_id ORDER BY score DESC LIMIT 5 ";
 $result = mysqli_query($conn, $query);
-
-// $row_count = mysqli_num_rows($result);
-// $row_users = mysqli_fetch_array($result);
-
 ?>
 
 

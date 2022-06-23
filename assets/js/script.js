@@ -369,7 +369,6 @@ function replaceVideoFunc() {
 }
 
 // play and remove video
-
 let lastKey = "";
 window.addEventListener("keydown", (e) => {
   switch (e.code) {
