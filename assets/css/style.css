@@ -1,6 +1,7 @@
 @font-face {
   font-family: EarthBound;
-  src: url(http://u210549.gluweb.nl/meditation-island/assets/font/apple_kid.woff);
+  /* src: url(http://u210549.gluweb.nl/meditation-island/assets/font/apple_kid.woff); */
+  src: url(../assets/font/apple_kid.woff);
 }
 
 body {
@@ -33,7 +34,7 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
-  font-size: 90px;
+  font-size: 60px;
   background-color: gray;
 }
 
@@ -48,7 +49,7 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
-  font-size: 90px;
+  font-size: 60px;
   background-color: gray;
 }
 
@@ -88,9 +89,11 @@ p {
   margin-top: 5px;
 }
 
-.name {
+.name,
+li {
   text-transform: uppercase;
 }
+/* add scoreboard also */
 
 .note {
   border: 1px solid;

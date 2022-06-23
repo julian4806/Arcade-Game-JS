@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 23 jun 2022 om 15:37
+-- Gegenereerd op: 23 jun 2022 om 15:53
 -- Serverversie: 10.4.21-MariaDB
 -- PHP-versie: 7.4.23
 
@@ -24,32 +24,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `players`
+-- Tabelstructuur voor tabel `player`
 --
 
-CREATE TABLE `players` (
-  `id` int(9) NOT NULL,
-  `name` varchar(3) NOT NULL,
-  `score` int(9) NOT NULL,
-  `player_id` int(9) NOT NULL
+CREATE TABLE `player` (
+  `id` int(10) NOT NULL,
+  `name` varchar(25) NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Gegevens worden geëxporteerd voor tabel `players`
+-- Gegevens worden geëxporteerd voor tabel `player`
 --
 
-INSERT INTO `players` (`id`, `name`, `score`, `player_id`) VALUES
-(1228, 'jak', 3, 0),
-(1230, 'ROW', 1, 0),
-(1231, '222', 5, 0),
-(1232, '333', 1, 0),
-(1233, 'jan', 5, 0),
-(1234, 'jul', 5, 0),
-(1235, 'roe', 5, 0),
-(1236, 'flp', 5, 0),
-(1237, 'www', 5, 0),
-(1238, 'jul', 6, 0),
-(1239, 'xnb', 6, 0);
+INSERT INTO `player` (`id`, `name`, `date`) VALUES
+(18, 'jul', '2022-06-23');
 
 -- --------------------------------------------------------
 
@@ -60,17 +49,25 @@ INSERT INTO `players` (`id`, `name`, `score`, `player_id`) VALUES
 CREATE TABLE `score` (
   `id` int(10) NOT NULL,
   `player_id` int(10) NOT NULL,
-  `score` int(25) NOT NULL
+  `score` int(25) NOT NULL,
+  `playdate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `score`
+--
+
+INSERT INTO `score` (`id`, `player_id`, `score`, `playdate`) VALUES
+(20, 18, 20, '2022-06-23 15:52:47');
 
 --
 -- Indexen voor geëxporteerde tabellen
 --
 
 --
--- Indexen voor tabel `players`
+-- Indexen voor tabel `player`
 --
-ALTER TABLE `players`
+ALTER TABLE `player`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -84,16 +81,16 @@ ALTER TABLE `score`
 --
 
 --
--- AUTO_INCREMENT voor een tabel `players`
+-- AUTO_INCREMENT voor een tabel `player`
 --
-ALTER TABLE `players`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1240;
+ALTER TABLE `player`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT voor een tabel `score`
 --
 ALTER TABLE `score`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -4,7 +4,7 @@ include "./db_conn.php";
 $obj = new Connection();
 $conn = $obj->connection();
 
-$query = " SELECT * FROM `players` ORDER BY score DESC LIMIT 5 ";
+$query = " SELECT player.name AS player, score.score AS score FROM player INNER JOIN score ON player.id = score.player_id ORDER BY score DESC LIMIT 5 ";
 $result = mysqli_query($conn, $query);
 
 // $row_count = mysqli_num_rows($result);
@@ -34,7 +34,7 @@ $result = mysqli_query($conn, $query);
         <div class="initialMessage">
             <h1>Meditation Island</h1>
             No competition here! <br>
-            Just get <span>25</span> points to complete the game! <br>
+            Just get <span>20</span> points to complete the game! <br>
             Enjoy and B-Calm ✌️!
         </div>
         <div class="winMessage" style="display: none;">
@@ -52,7 +52,7 @@ $result = mysqli_query($conn, $query);
                 <ul>
                     <?php
                     while ($row_users = mysqli_fetch_array($result)) {
-                        echo "<li>" . ($row_users['name']) . ": " . ($row_users['score']) . "</li>";
+                        echo "<li>" . ($row_users['player']) . ": " . ($row_users['score']) . "</li>";
                     }
                     ?>
                 </ul>

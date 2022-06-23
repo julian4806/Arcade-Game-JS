@@ -20,9 +20,9 @@ class Sprite {
             );
             gameOver = true;
           }
-          // setTimeout(() => {
-          //   location.reload();
-          // }, 6000);
+          setTimeout(() => {
+            location.reload();
+          }, 6000);
         }
         // console.log("Y position: " + this.position.y);
         // console.log("X position: " + this.position.x);
