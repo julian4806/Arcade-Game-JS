@@ -1,6 +1,6 @@
 @font-face {
   font-family: EarthBound;
-  src: url(/assets/font/apple_kid.woff);
+  src: url(http://u210549.gluweb.nl/meditation-island/assets/font/apple_kid.woff);
 }
 
 body {
@@ -37,7 +37,7 @@ h1 {
   background-color: gray;
 }
 
-.initialMessage span{
+.initialMessage span {
   color: blueviolet;
 }
 

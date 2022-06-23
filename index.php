@@ -1,3 +1,18 @@
+<?php
+
+include "./db_conn.php";
+$obj = new Connection();
+$conn = $obj->connection();
+
+$query = " SELECT * FROM `players` ORDER BY score DESC LIMIT 5 ";
+$result = mysqli_query($conn, $query);
+
+// $row_count = mysqli_num_rows($result);
+// $row_users = mysqli_fetch_array($result);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,11 +50,11 @@
             <div class="scoreboard">
                 <p>scoreboard</p>
                 <ul>
-                    <li>1.</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
+                    <?php
+                    while ($row_users = mysqli_fetch_array($result)) {
+                        echo "<li>" . ($row_users['name']) . ": " . ($row_users['score']) . "</li>";
+                    }
+                    ?>
                 </ul>
                 <div>
                     Your name: <span class="name"></span><br>

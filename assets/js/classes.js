@@ -11,11 +11,18 @@ class Sprite {
       //Check position
       setInterval(() => {
         yourScore.innerText = Math.floor(scoreCounter);
-        if (yourScore.innerText == "25") {
+        if (scoreCounter >= 20) {
           winMessage.style.display = "block";
-          setTimeout(() => {
-            location.reload();
-          }, 6000);
+          console.log("end");
+          if (!gameOver) {
+            fetch(
+              `saveHighScore.php?player=${playerName}&score=${scoreCounter}`
+            );
+            gameOver = true;
+          }
+          // setTimeout(() => {
+          //   location.reload();
+          // }, 6000);
         }
         // console.log("Y position: " + this.position.y);
         // console.log("X position: " + this.position.x);
@@ -46,7 +53,6 @@ class Sprite {
           this.position.x >= -1512 &&
           this.position.y === -855
         ) {
-          text = "an old pond...";
           if (keys.d.pressed && lastKey === "Space") {
             replaceVideoFunc();
           }

@@ -6,13 +6,21 @@ let talah = document.querySelector(".talahRama");
 let yourScore = document.querySelector(".yourScore");
 let scoreCounter = 0;
 const show = [notification, talah];
-const cantTalk = new Audio("/assets/audio/blocked.mp3");
-const messageTalk = new Audio("/assets/audio/message.mp3");
+const cantTalk = new Audio(
+  "http://u210549.gluweb.nl/meditation-island/assets/audio/blocked.mp3"
+);
+const messageTalk = new Audio(
+  "http://u210549.gluweb.nl/meditation-island/assets/audio/message.mp3"
+);
 const winMessage = document.querySelector(".winMessage");
 const video = document.querySelector(".video");
 
+let playerName;
+
 window.addEventListener("load", () => {
   let person = prompt("Please enter your name", "Must contain 3 characters");
+  playerName = person;
+  console.log(playerName);
   document.querySelector(".name").innerHTML = person;
   if (person == null || person == "Max 3 characters" || person.length !== 3) {
     location.reload();
@@ -108,7 +116,7 @@ const playerLeftImage = new Image();
 playerLeftImage.src = "./assets/img/player/playerLeft.png";
 const playerRightImage = new Image();
 playerRightImage.src = "./assets/img/player/playerRight.png";
-
+let gameOver = false;
 // player starting position
 const player = new Sprite({
   position: {
@@ -349,11 +357,13 @@ function replaceVideoFunc() {
     video.innerHTML = putVideo;
     replaceVideo = true;
     setTimeout(() => {
+      notification.innerHTML = "😑";
+    }, 500);
+    setTimeout(() => {
       replaceVideo = false;
-      console.log("done");
       video.innerHTML = "";
       reuse = true;
-      scoreCounter += 3;
+      scoreCounter += 5;
     }, 3000);
   }
 }
@@ -411,7 +421,9 @@ let reuse = null;
 let testBlocked = false;
 function talahRama() {
   if (blocked === false) {
-    let mA = new Audio(`/assets/audio/meditate.mp3`);
+    let mA = new Audio(
+      `http://u210549.gluweb.nl/meditation-island/assets/audio/meditate.mp3`
+    );
     mA.loop = true;
     let interval = setInterval(() => {
       let opacity = Math.floor(Math.random() * 7 + 1);
