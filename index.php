@@ -65,13 +65,3 @@ $result = mysqli_query($conn, $query);
 </body>
 
 </html>
-
-<!-- 
-
-https://youtu.be/yP5DKzriqXA
-3:04:54
-
-To-Do:
-Resize players
-    
- -->
